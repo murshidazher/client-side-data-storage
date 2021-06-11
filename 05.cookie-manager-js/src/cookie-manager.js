@@ -150,6 +150,8 @@
 
   };
 
+  // https://auth0.com/blog/javascript-module-systems-showdown/
+  // https://gist.github.com/CrocoDillon/9990078
   // AMD support
   if (typeof define === 'function' && define.amd) {
     define(function () {
