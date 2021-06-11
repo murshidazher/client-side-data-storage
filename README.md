@@ -21,7 +21,7 @@
 Different storage technologies are available and each of the below listed technologies solves an individual problem,
 
 - Cookies
-- LocalStorage and SessionStorage
+- HTML5 WebStorage - LocalStorage and SessionStorage
 - WebSQL
 - IndexedDB
 - Offline Storage
@@ -53,6 +53,14 @@ Cookie = "
 ```
 
 ## HTML5 Web Storage
+
+- Before HTML5 Web Storage there was cookies but with a limited storage of 4KB. Moreover, they sent the cookies on every request hence slowing down.
+- Web storage attempts to provide client-side only storage with no interaction with server-side.
+- Web storage provides two different types of storage,
+  - LocalStorage - data isn't delete until the user manually deletes it  (persistent storage).
+  - SessionStorage - data stored in the SessionStorage is temporary and cleared if the browser is closed. It only saved for a browser session.
+- The main difference between these two types is the lifetime of the data not the functionality.
+- If we open two browser with the same domain, session storage will not be in persisted in the same storage but the local storage will be available.
 
 ## WebSQL
 
