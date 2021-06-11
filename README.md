@@ -14,6 +14,9 @@
   - [HTML5 Web Storage](#html5-web-storage)
   - [WebSQL](#websql)
   - [IndexedDB](#indexeddb)
+  - [IndexedDB Advance](#indexeddb-advance)
+    - [Creating Indexes](#creating-indexes)
+    - [Iterating using Cursor](#iterating-using-cursor)
   - [License](#license)
 
 ## Technologies
@@ -80,9 +83,26 @@ Cookie = "
 
 - If we wanted to manage large amount of data in client-side we could use the WebSQL but it was the first attempt to add a database to client-side.
 - The specification of WebSQL reached an impasse, because developer stopped using it due to it being tabular data and limited to SQL queries.
-- IndexedDB is a NoSQL database where every operation is asynchronous.
+- IndexedDB is a NoSQL database where every operation is `asynchronous`.
+- Asynchronous meaning that everything in Indexeddb is based on events. Since the database is event-driven, we need to catch the status of the events using the event-handler function.
 - Its also a transactional database meaning we can rollback an operation if a query fails.
 - Indexing is available in the IndexedDB.
+- We use the `indexedDB` global object to create and maintain the database.
+- There are four things to be aware of when working with IndexedDB,
+  - `Objects`
+  - `Object Store` - just like table, we need create an object store to store the objects.
+  - `Indexes` - used to easily identify a given object.
+  - `Transactions` - ensures the database integrity
+  - `Cursor` - its a mechanism for iterating over multiple records in our database.
+- If we've to update something in the database then we need to increase the database version and then use `onupgradeneeded` event handler to update the database or any other structural changes to the database. The handler name itself is descriptive.
+- When we change the version then `onupgradeneeded` will be automatically triggered.
+- Decimal numbers are converted to integer in version hence we cant use decimal numbers as version numbers. So we need to clearly use integer numbers for versions.
+
+## IndexedDB Advance
+
+### Creating Indexes
+
+### Iterating using Cursor
 
 ## License
 
