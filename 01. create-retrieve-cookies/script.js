@@ -21,6 +21,7 @@ window.onload = function () {
   console.log(getCookieValue('cookie_name100'));
 
   function getCookieValue(cookieKey) {
+    // retrieves the list of cookies
     var cookiesList = document.cookie.split(';').map(function (cookie) {
       return cookie.trim();
     });
