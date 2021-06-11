@@ -17,6 +17,7 @@ window.onload = function () {
     document.cookie = cookieStr;
 */
 
+  // get a cookie
   console.log(getCookieValue('cookie_name100'));
 
   function getCookieValue(cookieKey) {
