@@ -37,6 +37,8 @@ The pros are;
 - Small data upto the size of 4KB, key-value pairs stored by the browser.
 - Cookies are stored as strings and sent to the server on every subsequent request.
 - Cookies are build as an extension of http protocol and because the http protocol is stateless.
+- Updating a cookie and only way to update a cookie is create a new cookie with the same name.
+- Deleting a cookie we need to update the cookie expiration time to a later or older time.
 
 ```txt
 // cookie_name=cookie_value; expires=Sun, 16 Jul 3567 06:23:41 GMT; path=/; secure
