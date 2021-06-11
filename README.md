@@ -64,6 +64,11 @@ Cookie = "
 
 ## WebSQL
 
+- WebSQL is a database located in the browser.
+- Before this we were only storing data as key-value pair but WebSQL uses table structure to store data. We can store more complex data and as many tables as we want.
+- WebSQL uses SQLite for storing data in the background as database engine.
+
+
 
 ## IndexedDB
 

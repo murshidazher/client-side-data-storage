@@ -150,6 +150,7 @@
 
   };
 
+  // Module support for library to use in different platforms
   // AMD support
   if (typeof define === 'function' && define.amd) {
     define(function () {
