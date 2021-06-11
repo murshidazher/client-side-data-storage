@@ -19,6 +19,7 @@ window.onload = function () {
   });
 
   // Retrieve Item from Table
+  // SELECT * FROM logs
   database.transaction(function (t) {
     t.executeSql('SELECT logMessage FROM logs WHERE id="12"', [],
       function (transaction, results) {
