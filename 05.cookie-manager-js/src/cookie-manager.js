@@ -150,9 +150,11 @@
 
   };
 
+  // Module support allows the library to be used in both client and server side.
   // https://auth0.com/blog/javascript-module-systems-showdown/
   // https://gist.github.com/CrocoDillon/9990078
-  // AMD support
+  // AMD support - Asynchronous module definition
+  // AMD modules are loaded in parallel
   if (typeof define === 'function' && define.amd) {
     define(function () {
       return CookieManager;
