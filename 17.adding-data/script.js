@@ -72,8 +72,4 @@ window.onload = function() {
       }
 
   });
-
-
-
-
 };

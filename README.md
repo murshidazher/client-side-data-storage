@@ -14,6 +14,7 @@
   - [HTML5 Web Storage](#html5-web-storage)
   - [WebSQL](#websql)
   - [IndexedDB](#indexeddb)
+    - [Transaction Modes](#transaction-modes)
   - [IndexedDB Advance](#indexeddb-advance)
     - [Creating Indexes](#creating-indexes)
     - [Iterating using Cursor](#iterating-using-cursor)
@@ -97,6 +98,13 @@ Cookie = "
 - If we've to update something in the database then we need to increase the database version and then use `onupgradeneeded` event handler to update the database or any other structural changes to the database. The handler name itself is descriptive.
 - When we change the version then `onupgradeneeded` will be automatically triggered.
 - Decimal numbers are converted to integer in version hence we cant use decimal numbers as version numbers. So we need to clearly use integer numbers for versions.
+- We write our queries `onsuccess` handler.
+
+### Transaction Modes
+
+- `readonly` - can only read data from object store, (default) without any param is this mode for transaction.
+- `readwrite` - transaction is allowed to read, write, delete and modify data
+- `versionchange` - same functionality as read write but in addition can change indexes, delete object stores and more.
 
 ## IndexedDB Advance
 

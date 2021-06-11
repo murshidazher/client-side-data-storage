@@ -6,6 +6,7 @@ window.onload = function () {
 
   var dbRequest = indexedDB.open(dbName, dbVersion);
 
+  // we write our queries on onsuccess
   dbRequest.onsuccess = function (event) {
     console.log('Success');
 
@@ -15,7 +16,11 @@ window.onload = function () {
     // Creating Transaction
     // db.transaction(storeName(s), mode)
     // storeNames -> "storeName" or ["storeName1", "storeName2"]
+    // we can assign single or multiple store names
     // mode -> "readonly" or "readwrite" or "versionchange"
+    // readonly - can only read data from object store
+    // readwrite - transaction is allowed to read, write, delete and modify data
+    // versionchange - same functionality as read write but in addition can change indexes, delete object stores and more
 
     var trans = db.transaction('books', 'readwrite');
 

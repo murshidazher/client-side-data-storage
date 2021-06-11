@@ -4,7 +4,7 @@ window.onload = function () {
   // indexedDB.open(dbName, dbVersion)
 
   var dbName = 'testdb';
-  var dbVersion = 3;
+  var dbVersion = 2;
 
   var dbRequest = indexedDB.open(dbName, dbVersion);
 
