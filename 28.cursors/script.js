@@ -1,22 +1,21 @@
-
-
-
-
-
-window.onload = function() {
+window.onload = function () {
 
   var dbName = 'library';
   var dbVersion = 4;
 
   var dbRequest = indexedDB.open(dbName, dbVersion);
 
-  dbRequest.onupgradeneeded = function(event) {
+  dbRequest.onupgradeneeded = function (event) {
     var db = event.target.result;
-    var store = db.createObjectStore('books', { keyPath: 'isbn' });
-    store.createIndex('by_author', 'author', { unique: false });
+    var store = db.createObjectStore('books', {
+      keyPath: 'isbn'
+    });
+    store.createIndex('by_author', 'author', {
+      unique: false
+    });
   };
 
-  dbRequest.onsuccess = function() {
+  dbRequest.onsuccess = function () {
     console.log('DB is successfully opened!');
 
     // Handling Database
@@ -33,13 +32,13 @@ window.onload = function() {
 
     var cursorRequest = store.openCursor();
 
-    cursorRequest.onsuccess = function(event) {
+    cursorRequest.onsuccess = function (event) {
       var cursor = event.target.result;
 
-      if(cursor) {
+      if (cursor) {
         console.log(cursor.value);
         cursor.continue();
-      }else {
+      } else {
         console.log('All items are listed!');
       }
 
@@ -47,13 +46,13 @@ window.onload = function() {
 
     var cursorKeyRequest = store.openKeyCursor();
 
-    cursorKeyRequest.onsuccess = function(event) {
+    cursorKeyRequest.onsuccess = function (event) {
       var cursor = event.target.result;
 
-      if(cursor) {
+      if (cursor) {
         console.log(cursor);
         cursor.continue();
-      }else {
+      } else {
         console.log('All keys are listed!');
       }
 
@@ -61,13 +60,13 @@ window.onload = function() {
 
     var cursorIndexRequest = index.openCursor();
 
-    cursorIndexRequest.onsuccess = function(event) {
+    cursorIndexRequest.onsuccess = function (event) {
       var cursor = event.target.result;
 
-      if(cursor) {
+      if (cursor) {
         console.log('Index Cursor : ' + cursor.value);
         cursor.continue();
-      }else {
+      } else {
         console.log('All items are listed!');
       }
 
@@ -75,16 +74,16 @@ window.onload = function() {
 
     var cursorIndexKeyRequest = index.openKeyCursor();
 
-    cursorIndexKeyRequest.onsuccess = function(event) {
+    cursorIndexKeyRequest.onsuccess = function (event) {
       var cursor = event.target.result;
 
-      if(cursor) {
+      if (cursor) {
         console.log('Index key cursor ' + cursor);
-        if(cursor.key % 2 == 0) {
+        if (cursor.key % 2 == 0) {
           // do something
         }
         cursor.continue();
-      }else {
+      } else {
         console.log('All keys are listed!');
       }
 
@@ -92,7 +91,7 @@ window.onload = function() {
 
   };
 
-  dbRequest.onerror = function() {
+  dbRequest.onerror = function () {
     console.log('DB is NOT opened!');
   };
 

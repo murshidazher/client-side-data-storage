@@ -1,16 +1,11 @@
-
-
-
-
-
-window.onload = function() {
+window.onload = function () {
 
   var dbName = 'library';
   var dbVersion = 1;
 
   var dbRequest = indexedDB.open(dbName, dbVersion);
 
-  dbRequest.onsuccess = function(event) {
+  dbRequest.onsuccess = function (event) {
     console.log('DB is successfully opened!');
 
 
@@ -27,7 +22,7 @@ window.onload = function() {
     // Removing All Objects
     var request = store.clear();
 
-    request.onsuccess = function() {
+    request.onsuccess = function () {
       alert('All objects are removed :(');
     };
 
@@ -36,7 +31,7 @@ window.onload = function() {
 
   };
 
-  dbRequest.onerror = function() {
+  dbRequest.onerror = function () {
     console.log('DB is NOT opened!');
   };
 

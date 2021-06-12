@@ -1,16 +1,11 @@
-
-
-
-
-
-window.onload = function() {
+window.onload = function () {
 
   var dbName = 'library';
   var dbVersion = 1;
 
   var dbRequest = indexedDB.open(dbName, dbVersion);
 
-  dbRequest.onsuccess = function(event) {
+  dbRequest.onsuccess = function (event) {
     console.log('DB is successfully opened!');
 
     // Handling Database
@@ -25,18 +20,18 @@ window.onload = function() {
     // Calculating Items Count
     var request = store.count();
 
-    request.onsuccess = function(event) {
+    request.onsuccess = function (event) {
       var itemsNum = event.target.result;
       $('#items-count').html(itemsNum);
     }
 
-    request.onerror = function(event) {
+    request.onerror = function (event) {
       console.log('Count Function Not Working!');
     };
 
   };
 
-  dbRequest.onerror = function() {
+  dbRequest.onerror = function () {
     console.log('DB is NOT opened!');
   };
 

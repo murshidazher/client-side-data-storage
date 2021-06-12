@@ -1,21 +1,18 @@
-
-
-
-
-
-window.onload = function() {
+window.onload = function () {
 
   var dbName = 'library';
   var dbVersion = 4;
 
   var dbRequest = indexedDB.open(dbName, dbVersion);
 
-  dbRequest.onupgradeneeded = function(event) {
+  dbRequest.onupgradeneeded = function (event) {
     var db = event.target.result;
-    db.createObjectStore('books', { keyPath: 'isbn' });
+    db.createObjectStore('books', {
+      keyPath: 'isbn'
+    });
   };
 
-  dbRequest.onsuccess = function() {
+  dbRequest.onsuccess = function () {
     console.log('DB is successfully opened!');
 
     // Handling Database
@@ -30,18 +27,19 @@ window.onload = function() {
     var cursorRequest = store.openCursor();
 
 
+    // pagination
     var LIMIT = 15;
     var OFFSET = 20;
     var i = 0;
 
-    cursorRequest.onsuccess = function(event) {
+    cursorRequest.onsuccess = function (event) {
       var cursor = event.target.result;
 
-      if(cursor) {
-        if(i < LIMIT + OFFSET) {
-          if(i >= LIMIT) {
+      if (cursor) {
+        if (i < LIMIT + OFFSET) {
+          if (i >= LIMIT) {
             console.group('Object');
-            console.log(i+1);
+            console.log(i + 1);
             console.log(cursor.value);
             console.groupEnd();
           }
@@ -55,15 +53,9 @@ window.onload = function() {
 
     };
 
-
-
-
-
-
-
   };
 
-  dbRequest.onerror = function() {
+  dbRequest.onerror = function () {
     console.log('DB is NOT opened!');
   };
 

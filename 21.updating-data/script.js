@@ -1,34 +1,29 @@
-
-
-
-
-
-window.onload = function() {
+window.onload = function () {
 
   var dbName = 'library';
   var dbVersion = 1;
 
   var dbRequest = indexedDB.open(dbName, dbVersion);
 
-  dbRequest.onsuccess = function(event) {
+  dbRequest.onsuccess = function (event) {
     console.log('DB is successfully opened!');
   };
 
-  dbRequest.onerror = function() {
+  dbRequest.onerror = function () {
     console.log('DB is NOT opened!');
   };
 
-  $('#fetch-book-button').click(function(event) {
+  $('#fetch-book-button').click(function (event) {
     var isbn = $('#isbn-input-box').val();
 
-    if(isbn) {
+    if (isbn) {
       fetchBook(isbn);
     } else {
       alert('Please enter an isbn!');
     }
   });
 
-  $('#update-book-button').click(function(event) {
+  $('#update-book-button').click(function (event) {
     event.preventDefault();
 
     var isbn = $('#isbn').val();
@@ -59,10 +54,10 @@ window.onload = function() {
     // Retrieve Object
     var request = store.get(isbn);
 
-    request.onsuccess = function(event) {
+    request.onsuccess = function (event) {
       var book = event.target.result;
 
-      if(book) {
+      if (book) {
         fillUpdateForm(book);
       } else {
         alert('There is no book with this ISBN!');
@@ -88,9 +83,10 @@ window.onload = function() {
     var store = transaction.objectStore('books');
 
     // Update Object
+    // the id of the object should be the same for the update
     var request = store.put(book);
 
-    request.onsuccess = function() {
+    request.onsuccess = function () {
       alert('The object is Updated!')
     };
 

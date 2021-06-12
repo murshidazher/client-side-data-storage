@@ -86,11 +86,12 @@ Cookie = "
 - The specification of WebSQL reached an impasse, because developer stopped using it due to it being tabular data and limited to SQL queries.
 - IndexedDB is a NoSQL database where every operation is `asynchronous`.
 - Asynchronous meaning that everything in Indexeddb is based on events. Since the database is event-driven, we need to catch the status of the events using the event-handler function.
+- Moreover, the data structure in Indexeddb is more flexible.
 - Its also a transactional database meaning we can rollback an operation if a query fails.
 - Indexing is available in the IndexedDB.
 - We use the `indexedDB` global object to create and maintain the database.
 - There are four things to be aware of when working with IndexedDB,
-  - `Objects`
+  - `Objects` - stored as properties
   - `Object Store` - just like table, we need create an object store to store the objects.
   - `Indexes` - used to easily identify a given object.
   - `Transactions` - ensures the database integrity
@@ -108,9 +109,22 @@ Cookie = "
 
 ## IndexedDB Advance
 
+> Look into [Mozilla IndexedDB API](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/openCursor)
+
 ### Creating Indexes
 
+- Its main purpose is to increase the query execution time. Index is the same as indexes in books which makes search easier.
+
 ### Iterating using Cursor
+
+- The cursor is used to iterate the database one by one.
+- `openKeyCursor` will only iterate over the keys
+- `openCursor` to get key and value.
+- See [limiting-queries](./29.limiting-queries/script.js) for pagination and limiting using cursor.
+- Key-range allows us to limit the cursor iterating range.
+  - `lowerBound`
+  - `upperBound`
+  - `open`
 
 ## License
 

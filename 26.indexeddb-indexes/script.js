@@ -1,22 +1,24 @@
-
-
-
-
-
-window.onload = function() {
+window.onload = function () {
 
   var dbName = 'library';
   var dbVersion = 1;
 
   var dbRequest = indexedDB.open(dbName, dbVersion);
 
-  dbRequest.onupgradeneeded = function(event) {
+  dbRequest.onupgradeneeded = function (event) {
     var db = event.target.result;
-    var store = db.createObjectStore('books', { keyPath: 'isbn' });
-    store.createIndex('by_author', 'author', { unique: false });
+    var store = db.createObjectStore('books', {
+      keyPath: 'isbn'
+    });
+
+    // store.createIndex(indexName, keyPath, options)
+    // unique or multientry - creates a combination of index as array.
+    store.createIndex('by_author', 'author', {
+      unique: false
+    });
   };
 
-  dbRequest.onsuccess = function() {
+  dbRequest.onsuccess = function () {
     console.log('DB is successfully opened!');
 
     // Handling Database
@@ -35,7 +37,7 @@ window.onload = function() {
     var author = 'Eric A. Meyer';
     var getEric = index.getAll(author);
 
-    getEric.onsuccess = function(event) {
+    getEric.onsuccess = function (event) {
       console.log(event.target.result);
     }
 
@@ -67,7 +69,7 @@ window.onload = function() {
     */
   };
 
-  dbRequest.onerror = function() {
+  dbRequest.onerror = function () {
     console.log('DB is NOT opened!');
   };
 

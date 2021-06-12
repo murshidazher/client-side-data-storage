@@ -1,22 +1,21 @@
-
-
-
-
-
-window.onload = function() {
+window.onload = function () {
 
   var dbName = 'library';
   var dbVersion = 4;
 
   var dbRequest = indexedDB.open(dbName, dbVersion);
 
-  dbRequest.onupgradeneeded = function(event) {
+  dbRequest.onupgradeneeded = function (event) {
     var db = event.target.result;
-    var store = db.createObjectStore('books', { keyPath: 'isbn' });
-    store.createIndex('by_author', 'author', { unique: false });
+    var store = db.createObjectStore('books', {
+      keyPath: 'isbn'
+    });
+    store.createIndex('by_author', 'author', {
+      unique: false
+    });
   };
 
-  dbRequest.onsuccess = function() {
+  dbRequest.onsuccess = function () {
     console.log('DB is successfully opened!');
 
     // Handling Database
@@ -34,15 +33,15 @@ window.onload = function() {
     // IDBKeyRange.upperBound(key, [open=false])
     // IDBKeyRange.bound(lowerKey, upperKey, [open=false], [open=false])
 
-    var range = IDBKeyRange.bound("11182069161036","11182069161085", true, true);
+    var range = IDBKeyRange.bound("11182069161036", "11182069161085", true, true);
 
 
     var cursorRequest = store.openCursor(range);
 
-    cursorRequest.onsuccess = function(event) {
+    cursorRequest.onsuccess = function (event) {
       var cursor = event.target.result;
 
-      if(cursor) {
+      if (cursor) {
         console.log(cursor);
         cursor.continue();
       } else {
@@ -52,7 +51,7 @@ window.onload = function() {
 
   };
 
-  dbRequest.onerror = function() {
+  dbRequest.onerror = function () {
     console.log('DB is NOT opened!');
   };
 
