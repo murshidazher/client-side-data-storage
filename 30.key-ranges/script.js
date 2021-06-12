@@ -30,6 +30,7 @@ window.onload = function () {
 
     // IDBKeyRange.only(key)
     // IDBKeyRange.lowerBound(key, [open=false])
+    // IDBKeyRange.lowerBound(key, true)
     // IDBKeyRange.upperBound(key, [open=false])
     // IDBKeyRange.bound(lowerKey, upperKey, [open=false], [open=false])
 

@@ -124,7 +124,7 @@ Cookie = "
 - Key-range allows us to limit the cursor iterating range.
   - `lowerBound`
   - `upperBound`
-  - `open`
+  - `open` - if we need to exclude the upperbound or lowerbound we will assign as `true`.
 
 ## License
 
